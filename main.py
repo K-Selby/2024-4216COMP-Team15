@@ -1,12 +1,12 @@
 
 # User Interaction
 print("Menu")
-print("1. Mental Illness & Fleeing (Piechart)")
-print("2. Fleeing & Race")
-print("3. Race & States")
-print("4. Year & States")
-print("5. Threat Level & Mental Illness")
-print("6. Race & Date")
+print("1. Mental Illness & Fleeing - EB")
+print("2. Fleeing & Race - MD")
+print("3. Race & States - KS")
+print("4. Year & States - RP")
+print("5. Threat Level & Mental Illness - JA")
+print("6. Race & Date - TW")
 
 userInput = input("Enter the menu number for the visuallisation you want to view")
 
