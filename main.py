@@ -6,7 +6,7 @@ print("2. Fleeing & Race")
 print("3. Race & States")
 print("4. Year & States")
 print("5. Threat Level & Mental Illness")
-print("6. ...")
+print("6. Race & Date")
 
 userInput = input("Enter the menu number for the visuallisation you want to view")
 
@@ -23,4 +23,4 @@ match userInput:
     case '5':
         print("You have chosen Threat Level & Mental Illness")
     case '6':
-        print("You have chosen ...")
+        print("You have chosen Race & Date")
