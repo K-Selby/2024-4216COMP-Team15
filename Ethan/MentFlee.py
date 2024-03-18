@@ -5,7 +5,7 @@ import pandas as pd
 plt.style.use('_mpl-gallery-nogrid')
 
 # reading data from file
-data = pd.read_csv('Police shootings US.csv')
+data = pd.read_csv('police shootings.csv')
 
 #taking values out of mental illness
 values_column = 'signs_of_mental_illness'
