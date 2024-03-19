@@ -1,11 +1,11 @@
 # Imports
 import pandas
-import matplotlib.pyplot
-
+import matplotlib.pyplot as plt
 
 data = pandas.read_csv('Dataset/fatal-police-shootings-data.csv')
 data = data.sort_values(by='date')
 
+# Creates data frames sepereated into years
 dateData1 = data[data["date"] < "2016-01-00"]
 dateData2 = data[(data["date"] > "2016-01-00") & (data["date"] < "2017-01-01")]
 dateData3 = data[(data["date"] > "2017-01-00") & (data["date"] < "2018-01-01")]
@@ -23,14 +23,8 @@ def createArray():
     array = [[value, 0, 0, 0, 0, 0, 0, 0] for value in array]
     return array
 
-yearArray1 = createArray()
-yearArray2 = createArray()
-yearArray3 = createArray()
-yearArray4 = createArray()
-yearArray5 = createArray()
-
 # counts the race and sort into states
-def arrayCounter(dataframe, array):
+def deathCounter(dataframe, array):
     for _, row in dataframe.iterrows():
         race = row["race"]
         state = row["state"]
@@ -65,15 +59,35 @@ def arrayCounter(dataframe, array):
                 
     return array
 
+# Gets top 5 states
+def sortArray():
+    pass
 
-yearArray1 = arrayCounter(dateData1, yearArray1)
-yearArray2 = arrayCounter(dateData2, yearArray2)
-yearArray3 = arrayCounter(dateData3, yearArray3)
-yearArray4 = arrayCounter(dateData4, yearArray4)
-yearArray5 = arrayCounter(dateData5, yearArray5)
+# Creates the bar charts graphs
+def barchart(state1, state2, state3, state4, state5, values):
+    races = ["A", "W", "B", "H", "L", "O"]
+    
+    fig, (graph1, graph2, graph3, graph4, graph5) = plt.subplots(1, 5)
+    graph1.set_title(state1)
+    graph2.set_title(state2)
+    graph3.set_title(state3)
+    graph4.set_title(state4)
+    graph4.set_title(state5)
+    
+    graph1.bar(races, values)
+    
+    plt.show()
+    
+yearArray1 = createArray()
+yearArray2 = createArray()
+yearArray3 = createArray()
+yearArray4 = createArray()
+yearArray5 = createArray()
 
-print(yearArray1)
-print(yearArray2)
-print(yearArray3)
-print(yearArray4)
-print(yearArray5)
+yearArray1 = deathCounter(dateData1, yearArray1)
+yearArray2 = deathCounter(dateData2, yearArray2)
+yearArray3 = deathCounter(dateData3, yearArray3)
+yearArray4 = deathCounter(dateData4, yearArray4)
+yearArray5 = deathCounter(dateData5, yearArray5)
+
+barchart()
