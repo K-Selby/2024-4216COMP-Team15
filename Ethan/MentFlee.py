@@ -26,17 +26,18 @@ def pie():
 
     # plot
     fig, ax = plt.subplots()
-    ax.pie([fleeingcount, notfleeingcount,numtrue, numfalse], labels = ['fleeing','not fleeing','Mentally Ill', 'Not Mentally Ill'], autopct='%1.1f%%', startangle=90)
+    ax.pie([fleeingcount, notfleeingcount,numtrue, numfalse], labels = ['fleeing','not fleeing','Mentally Ill', 'Not Mentally Ill'], autopct='%1.1f%%', startangle=90, wedgeprops=dict(width=0.4, edgecolor='w'))
 
+    #changing sizes of fonts
+    plt.setp(ax.get_xticklabels(), fontsize=10)
+    plt.setp(ax.get_yticklabels(), fontsize=10)
 
-    #ax.pie(x, colors=colors, radius=3, center=(4, 4),
-        #wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame=True)
-
-    #ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
-        #ylim=(0, 8), yticks=np.arange(1, 8))
 
     ax.axis('equal')
+    ax.set_aspect('equal')
     plt.title('mental illness and fleeing statistics')
+
+    plt.subplots_adjust(top=1)
 
     plt.show()
 
