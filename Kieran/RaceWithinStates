@@ -1,0 +1,79 @@
+# Imports
+import pandas
+import matplotlib.pyplot
+
+
+data = pandas.read_csv('Dataset/fatal-police-shootings-data.csv')
+data = data.sort_values(by='date')
+
+dateData1 = data[data["date"] < "2016-01-00"]
+dateData2 = data[(data["date"] > "2016-01-00") & (data["date"] < "2017-01-01")]
+dateData3 = data[(data["date"] > "2017-01-00") & (data["date"] < "2018-01-01")]
+dateData4 = data[(data["date"] > "2019-01-00") & (data["date"] < "2020-01-01")]
+dateData5 = data[(data["date"] > "2020-01-00") & (data["date"] < "2021-01-01")]
+
+state_data = data["state"]
+
+# Creates a 2d array with all 50 states and columns for the totals and races
+def createArray():
+    array = []
+    for i in range (50):
+        array.append(state_data.unique().tolist()[i])
+    #Sate, total, asian, white, hispanic, black, latino and other
+    array = [[value, 0, 0, 0, 0, 0, 0, 0] for value in array]
+    return array
+
+yearArray1 = createArray()
+yearArray2 = createArray()
+yearArray3 = createArray()
+yearArray4 = createArray()
+yearArray5 = createArray()
+
+# counts the race and sort into states
+def arrayCounter(dataframe, array):
+    for _, row in dataframe.iterrows():
+        race = row["race"]
+        state = row["state"]
+        
+        # Find the index of the state in the array
+        for i, sublist in enumerate(array):
+            if sublist[0] == state:
+                index = i
+                break
+        
+        array[index][1] += 1
+        
+        # Increment the corresponding race count based on the value of 'race'
+        match race:
+            case 'A':
+                array[index][2] += 1   
+            
+            case 'W':
+                array[index][3] += 1
+            
+            case 'H':
+                array[index][4] += 1 
+            
+            case 'B':
+                array[index][5] += 1
+            
+            case 'N':
+                array[index][6] += 1
+            
+            case _:
+                array[index][7] += 1
+                
+    return array
+
+
+yearArray1 = arrayCounter(dateData1, yearArray1)
+yearArray2 = arrayCounter(dateData2, yearArray2)
+yearArray3 = arrayCounter(dateData3, yearArray3)
+yearArray4 = arrayCounter(dateData4, yearArray4)
+yearArray5 = arrayCounter(dateData5, yearArray5)
+
+print(yearArray1)
+print(yearArray2)
+print(yearArray3)
+print(yearArray4)
+print(yearArray5)
