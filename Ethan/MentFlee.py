@@ -26,7 +26,7 @@ def pie():
 
     # plot
     fig, ax = plt.subplots()
-    ax.pie([fleeingcount, notfleeingcount,numtrue, numfalse], labels = ['fleeing','not fleeing','Mentally Ill', 'Not Mentally Ill'], autopct='%1.1f%%', startangle=90)
+    ax.pie([fleeingcount, notfleeingcount,numtrue, numfalse], labels = ['fleeing','not fleeing','Mentally Ill', 'Not Mentally Ill'], autopct='%1.1f%%', startangle=90, wedgeprops=dict(width=0.4, edgecolor='w'))
 
     #changing sizes of fonts
     plt.setp(ax.get_xticklabels(), fontsize=10)
