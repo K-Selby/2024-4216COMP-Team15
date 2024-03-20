@@ -17,7 +17,7 @@ def createArray():
     array = []
     for i in range (50):
         array.append(data["state"].unique().tolist()[i])
-    #Sate, total, asian, white, hispanic, black, latino and other
+    #State, total, asian, white, hispanic, black, latino and other
     array = [[x, 0, 0, 0, 0, 0, 0, 0] for x in array]
     return array
 
