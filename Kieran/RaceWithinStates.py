@@ -17,12 +17,12 @@ def createArray():
     array = []
     for i in range (50):
         array.append(data["state"].unique().tolist()[i])
-    #State, total, asian, white, hispanic, black, latino and other
-    array = [[x, 0, 0, 0, 0, 0, 0, 0] for x in array]
+    #State, total, asian, white, hispanic/latino, black and other
+    array = [[x, 0, 0, 0, 0, 0, 0] for x in array]
     return array
 
-# counts the race and sort into states
-def deathCounter(dataframe, array):
+# Counts the race and sort into states
+def raceCounter(dataframe, array):
     for _, row in dataframe.iterrows():
         race = row["race"]
         state = row["state"]
@@ -35,7 +35,7 @@ def deathCounter(dataframe, array):
         
         array[index][1] += 1
         
-        # Increment the corresponding race count based on the value of 'race'
+        # Increment the corresponding race count based on the value in 'race'
         match race:
             case 'A':
                 array[index][2] += 1   
@@ -45,19 +45,19 @@ def deathCounter(dataframe, array):
             
             case 'H':
                 array[index][4] += 1 
+                
+            case 'N':
+                array[index][4] += 1
             
             case 'B':
                 array[index][5] += 1
-            
-            case 'N':
-                array[index][6] += 1
-            
+             
             case _:
-                array[index][7] += 1
+                array[index][6] += 1
                 
     return array
 
-# Gets top 5 states
+# Gets top 5 states and the different values for races
 def sortArray(array):
     array = sorted(array, key=lambda x: x[1], reverse=True)
     array = array[:5]
@@ -70,17 +70,24 @@ def sortArray(array):
         state_values.append(array[i][4])
         state_values.append(array[i][5])
         state_values.append(array[i][6])
-        state_values.append(array[i][7])
     return state_names, state_values
 
-# Creates the bar charts graphs
-def barchart(states, stateValues):
-    races = ["A", "W", "H", "B", "L", "O"]
+# Creates the bar charts graph
+def barchart(states, stateValues, yearNo, mOfL, eOfL):
+    races = ["A", "W", "H/L", "B", "O"]
     
-    fig, (graph1, graph2, graph3, graph4, graph5) = plt.subplots(1, 5)
+    # Specify the desired window size
+    window_width = 12  # Width of the window in inches
+    window_height = 6  # Height of the window in inches
+
+    # Create a figure with the specified size
+    fig, (graph1, graph2, graph3, graph4, graph5) = plt.subplots(1, 5, figsize=(window_width, window_height))
     
     for graph in [graph1, graph2, graph3, graph4, graph5]:
         graph.set_ylim(0, max(stateValues)+5)
+
+    # Title for the whole figure
+    plt.suptitle(yearNo)
     
     graph1.set_title(states[0])
     graph2.set_title(states[1])
@@ -88,14 +95,39 @@ def barchart(states, stateValues):
     graph4.set_title(states[3])
     graph5.set_title(states[4])
     
+    # Define colors for each bar
+    colours = ['blue', 'white', 'red', 'purple', 'orange']
+
+    # Define border color
+    border_colour = 'black'
+
+    # Define border width
+    border_width = 1
+    
     # Plotting
-    graph1.bar(races, stateValues[:6])
-    graph2.bar(races, stateValues[6:12])
-    graph3.bar(races, stateValues[12:18])
-    graph4.bar(races, stateValues[18:24])
-    graph5.bar(races, stateValues[24:30])
- 
+    graph1.bar(races, stateValues[:5], color=colours, edgecolor=border_colour, linewidth=border_width)
+    graph2.bar(races, stateValues[5:10], color=colours, edgecolor=border_colour, linewidth=border_width)
+    graph3.bar(races, stateValues[10:15], color=colours, edgecolor=border_colour, linewidth=border_width)
+    graph4.bar(races, stateValues[15:20], color=colours, edgecolor=border_colour, linewidth=border_width)
+    graph5.bar(races, stateValues[20:25], color=colours, edgecolor=border_colour, linewidth=border_width)
+    
+    # Add labels and title for the whole figure
+    fig.text(0.5, 0.01, 'Race', ha='center')
+    fig.text(0.005, 0.5, 'No of Deaths', va='center', rotation='vertical')
+    
+    plt.tight_layout()  # Adjust layout to prevent overlap
+    plt.ion()
     plt.show()
+    
+    #  Wait for user input to update the display
+    while True:
+        userInput = input(f"Press Enter to {mOfL} display and to {eOfL}: ")
+        if userInput == "":
+            plt.close()
+            break
+        
+        else:
+            print("Invalid input, please try again.")
 
 yearArray1 = createArray()
 yearArray2 = createArray()
@@ -103,11 +135,11 @@ yearArray3 = createArray()
 yearArray4 = createArray()
 yearArray5 = createArray()
 
-yearArray1 = deathCounter(dateData1, yearArray1)
-yearArray2 = deathCounter(dateData2, yearArray2)
-yearArray3 = deathCounter(dateData3, yearArray3)
-yearArray4 = deathCounter(dateData4, yearArray4)
-yearArray5 = deathCounter(dateData5, yearArray5)
+yearArray1 = raceCounter(dateData1, yearArray1)
+yearArray2 = raceCounter(dateData2, yearArray2)
+yearArray3 = raceCounter(dateData3, yearArray3)
+yearArray4 = raceCounter(dateData4, yearArray4)
+yearArray5 = raceCounter(dateData5, yearArray5)
 
 yearStates1, yearValues1 = sortArray(yearArray1)
 yearStates2, yearValues2 = sortArray(yearArray2)
@@ -115,8 +147,8 @@ yearStates3, yearValues3 = sortArray(yearArray3)
 yearStates4, yearValues4 = sortArray(yearArray4)
 yearStates5, yearValues5 = sortArray(yearArray5)
 
-barchart(yearStates1, yearValues1)
-barchart(yearStates2, yearValues2)
-barchart(yearStates3, yearValues3)
-barchart(yearStates4, yearValues4)
-barchart(yearStates5, yearValues5)
+barchart(yearStates1, yearValues1, "Year 1", "update", "show year 2")
+barchart(yearStates2, yearValues2, "Year 2", "update", "show year 3")
+barchart(yearStates3, yearValues3, "Year 3", "update", "show year 4")
+barchart(yearStates4, yearValues4, "Year 4", "update", "show year 5")
+barchart(yearStates5, yearValues5, "Year 5", "close", "end the program")
