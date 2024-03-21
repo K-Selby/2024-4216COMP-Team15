@@ -43,7 +43,7 @@ def raceAndFleeingPieChart():
               colors = colours, 
               autopct='%1.1f%%', 
               startangle=90, 
-              wedgeprops={"linewidth": 1, "edgecolor": "black"}, 
+              wedgeprops={"linewidth": 1, "edgecolor": "white"}, 
               textprops={'fontsize': 8}
               )
 
