@@ -27,10 +27,10 @@ while True:
             from Kieran import RaceWithinStates
         case '4':
             print("You have chosen Year & States")
-            print("Not done!")
+            from Reece import yearandstates
         case '5':
             print("You have chosen Threat Level & Mental Illness")
-            print("Not done")
+            from Joe import mentThreat
         case '6':
             print("You have chosen Race & Date")
             from Tom import RaceDate

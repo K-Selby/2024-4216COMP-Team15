@@ -6,7 +6,7 @@ def openCSV():
     data = pd.read_csv('police shootings.csv')
     data = data.sort_values(by='date')
 
-    # Creates data frames sepereated into years
+    # Creates data frame
     dateData = data[data["date"] > "0000-00-00"]
     return data, dateData
 
