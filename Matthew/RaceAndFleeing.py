@@ -33,7 +33,7 @@ def raceAndFleeingPieChart():
                             if fleeing != "Not fleeing":
                                    unknown+=1
 
-       colours = ['#008fd5', '#fc4f30', 'white', '#e5ae37', '#6d904f']
+       colours = ['#008fd5', '#fc4f30', '#d3d3d3', '#e5ae37', '#6d904f']
 
        fig, ax = plt.subplots()
 
