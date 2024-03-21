@@ -2,18 +2,16 @@
 import pandas
 import matplotlib.pyplot as plt
 
-data = pandas.read_csv('police shootings.csv')
-data = data.sort_values(by='date')
+def openCSV():
+    data = pandas.read_csv('police shootings.csv')
+    data = data.sort_values(by='date')
 
-# Creates data frames sepereated into years
-dateData1 = data[data["date"] < "2016-01-00"]
-dateData2 = data[(data["date"] > "2016-01-00") & (data["date"] < "2017-01-01")]
-dateData3 = data[(data["date"] > "2017-01-00") & (data["date"] < "2018-01-01")]
-dateData4 = data[(data["date"] > "2019-01-00") & (data["date"] < "2020-01-01")]
-dateData5 = data[(data["date"] > "2020-01-00") & (data["date"] < "2021-01-01")]
+    # Creates data frames sepereated into years
+    dateData = data[data["date"] > "0000-00-00"]
+    return data, dateData
 
 # Creates a 2d array with all 50 states and columns for the totals and races
-def createArray():
+def createArray(data):
     array = []
     for i in range (50):
         array.append(data["state"].unique().tolist()[i])
@@ -73,7 +71,7 @@ def sortArray(array):
     return state_names, state_values
 
 # Creates the bar charts graph
-def barchart(states, stateValues, yearNo, mOfL, eOfL):
+def barchart(states, stateValues):
     races = ["A", "W", "H/L", "B", "O"]
     
     # Specify the desired window size
@@ -87,7 +85,7 @@ def barchart(states, stateValues, yearNo, mOfL, eOfL):
         graph.set_ylim(0, max(stateValues)+5)
 
     # Title for the whole figure
-    plt.suptitle(yearNo)
+    plt.suptitle("")
     
     graph1.set_title(states[0])
     graph2.set_title(states[1])
@@ -116,39 +114,13 @@ def barchart(states, stateValues, yearNo, mOfL, eOfL):
     fig.text(0.005, 0.5, 'No of Deaths', va='center', rotation='vertical')
     
     plt.tight_layout()  # Adjust layout to prevent overlap
-    plt.ion()
     plt.show()
+
+def callAllFunctions():
+    data, dateData = openCSV()
+    stateArray = createArray(data)
+    stateArray = raceCounter(dateData, stateArray)
+    stateNames, raceValues = sortArray(stateArray)
+    barchart(stateNames, raceValues)
     
-    #  Wait for user input to update the display
-    while True:
-        userInput = input(f"Press Enter to {mOfL} display and to {eOfL}: ")
-        if userInput == "":
-            plt.close()
-            break
-        
-        else:
-            print("Invalid input, please try again.")
-
-yearArray1 = createArray()
-yearArray2 = createArray()
-yearArray3 = createArray()
-yearArray4 = createArray()
-yearArray5 = createArray()
-
-yearArray1 = raceCounter(dateData1, yearArray1)
-yearArray2 = raceCounter(dateData2, yearArray2)
-yearArray3 = raceCounter(dateData3, yearArray3)
-yearArray4 = raceCounter(dateData4, yearArray4)
-yearArray5 = raceCounter(dateData5, yearArray5)
-
-yearStates1, yearValues1 = sortArray(yearArray1)
-yearStates2, yearValues2 = sortArray(yearArray2)
-yearStates3, yearValues3 = sortArray(yearArray3)
-yearStates4, yearValues4 = sortArray(yearArray4)
-yearStates5, yearValues5 = sortArray(yearArray5)
-
-barchart(yearStates1, yearValues1, "Year 1", "update", "show year 2")
-barchart(yearStates2, yearValues2, "Year 2", "update", "show year 3")
-barchart(yearStates3, yearValues3, "Year 3", "update", "show year 4")
-barchart(yearStates4, yearValues4, "Year 4", "update", "show year 5")
-barchart(yearStates5, yearValues5, "Year 5", "close", "end the program")
+callAllFunctions()
