@@ -7,9 +7,9 @@ def raceAndFleeingPieChart():
 
        asian, black, hispanic, notHispanic, white, other, unknown = 0, 0, 0, 0, 0, 0, 0
 
-       for i in range(len(data)):
-              race = data.values[i][7]
-              fleeing = data.values[i][12]
+       for _, row in data.iterrows():
+              race = row["race"]
+              fleeing = row["flee"]
               match race:
                      case "A":
                             if fleeing != "Not fleeing":
