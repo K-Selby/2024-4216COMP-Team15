@@ -37,19 +37,14 @@ def raceCounter(dataframe, array):
         match race:
             case 'A':
                 array[index][2] += 1   
-            
             case 'W':
                 array[index][3] += 1
-            
             case 'H':
-                array[index][4] += 1 
-                
+                array[index][4] += 1     
             case 'N':
-                array[index][4] += 1
-            
+                array[index][4] += 1           
             case 'B':
                 array[index][5] += 1
-             
             case _:
                 array[index][6] += 1
                 
