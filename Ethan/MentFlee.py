@@ -11,8 +11,8 @@ def pie():
 
     #taking values out of mental illness
     values_column = 'signs_of_mental_illness'
-    numtrue = data[values_column].sum()
-    numfalse = len(data) - numtrue
+    mentill = data[values_column].sum()
+    notmentill = len(data) - numtrue
 
     #taking values out of fleeing
     fleecol = 'flee'
@@ -23,10 +23,21 @@ def pie():
     #count of fleeing
     fleeingcount = ((data[fleecol] == 'Car') | (data[fleecol] == 'Foot') | (data[fleecol] == 'Other')).sum()
     
+    #count of mentally ill / fleeing
+    mentflee = mentill + fleeingcount
+
+    #count of mentally ill / NOT fleeing
+    mentnotflee = mentill + notfleeingcount
+
+    #count of NOT mentally ill / fleeing
+    notmentflee = notmentill + fleeingcount
+
+    #count of NOT mentally ill / NOT fleeing
+    notmentnotflee = notmentill + notfleeingcount
 
     # plot
-    fig, ax = plt.subplots()
-    ax.pie([fleeingcount, notfleeingcount,numtrue, numfalse], labels = ['fleeing','not fleeing','Mentally Ill', 'Not Mentally Ill'], autopct='%1.1f%%', startangle=90, wedgeprops=dict(width=0.4, edgecolor='w'))
+    fig, ax = plt.subplots(figsize=(10,6))
+    ax.pie([mentflee, mentnotflee,notmentflee, notmentnotflee], labels = ['Mentally ill & fleeing','Mentally ill & not fleeing','Not mentally ill & fleeing', 'Not Mentally Ill & not fleeing'], autopct='%1.1f%%', startangle=90, wedgeprops={"linewidth": 1, "edgecolor": "white"}, frame = True)
 
     #changing sizes of fonts
     plt.setp(ax.get_xticklabels(), fontsize=10)
@@ -37,11 +48,9 @@ def pie():
     ax.set_aspect('equal')
     plt.title('mental illness and fleeing statistics')
 
-    plt.subplots_adjust(top=1)
+    plt.subplots_adjust(top=0.85)
 
     plt.show()
 
-x = input("how would you like to see the data represented for mentally ill and fleeing?")
-if x == "pie":
-    pie()
+pie()
 
