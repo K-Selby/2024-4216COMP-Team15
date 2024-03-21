@@ -11,8 +11,8 @@ def pie():
 
     #taking values out of mental illness
     values_column = 'signs_of_mental_illness'
-    numtrue = data[values_column].sum()
-    numfalse = len(data) - numtrue
+    mentill = data[values_column].sum()
+    notmentill = len(data) - mentill
 
     #taking values out of fleeing
     fleecol = 'flee'
@@ -23,25 +23,46 @@ def pie():
     #count of fleeing
     fleeingcount = ((data[fleecol] == 'Car') | (data[fleecol] == 'Foot') | (data[fleecol] == 'Other')).sum()
     
+    #count of mentally ill / fleeing
+    mentflee = mentill + fleeingcount
+
+    #count of mentally ill / NOT fleeing
+    mentnotflee = mentill + notfleeingcount
+
+    #count of NOT mentally ill / fleeing
+    notmentflee = notmentill + fleeingcount
+
+    #count of NOT mentally ill / NOT fleeing
+    notmentnotflee = notmentill + notfleeingcount
+
+    #creating colours for pie chart
+    colours_flee_notflee = ['#ff9999','#66b3ff']
 
     # plot
-    fig, ax = plt.subplots()
-    ax.pie([fleeingcount, notfleeingcount,numtrue, numfalse], labels = ['fleeing','not fleeing','Mentally Ill', 'Not Mentally Ill'], autopct='%1.1f%%', startangle=90, wedgeprops=dict(width=0.4, edgecolor='w'))
-
-    #changing sizes of fonts
-    plt.setp(ax.get_xticklabels(), fontsize=10)
-    plt.setp(ax.get_yticklabels(), fontsize=10)
+    fig, axs = plt.subplots(1,2,figsize=(10,5))
+    #mentally ill
+    axs[0].pie([mentflee, mentnotflee], labels = [f'fleeing\n({mentflee})',f'not fleeing\n({mentnotflee})'], autopct='%1.1f%%', startangle=70, wedgeprops={"linewidth": 1, "edgecolor": "white"}, colors= colours_flee_notflee)
 
 
-    ax.axis('equal')
-    ax.set_aspect('equal')
-    plt.title('mental illness and fleeing statistics')
+    axs[0].axis('off')
+    axs[0].set_aspect('equal')
+    axs[0].set_title('mental illness')
 
-    plt.subplots_adjust(top=1)
+    axs[0].tick_params(axis='both', which='major', labelsize=10)
+
+    #not mentally ill
+    axs[1].pie([notmentflee, notmentnotflee], labels = [f'fleeing\n({notmentflee})', f'not fleeing\n({notmentnotflee})'], autopct='%1.1f%%', startangle=70, wedgeprops={"linewidth": 1, "edgecolor": "white"}, colors = colours_flee_notflee)
+
+    axs[1].axis('off')
+    axs[1].set_aspect('equal')
+    axs[1].set_title('not mental illness')
+
+    axs[1].tick_params(axis='both', which='major', labelsize=10)
+
+    plt.suptitle('Fleeing vs not fleeing')
+    plt.subplots_adjust(top=0.85)
 
     plt.show()
 
-x = input("how would you like to see the data represented for mentally ill and fleeing?")
-if x == "pie":
-    pie()
+pie()
 
