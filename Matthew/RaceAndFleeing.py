@@ -3,7 +3,7 @@ import pandas as pd
 
 def raceAndFleeingPieChart():
        plt.style.use('_mpl-gallery-nogrid')
-       data = pd.read_csv(r'C:\Users\Matthew Dodson\OneDrive - Liverpool John Moores University\Uni Coursework\Workshop\2024-4216COMP-Team15\Matthew\police shootings.csv')
+       data = pd.read_csv('police shootings.csv')
 
        asian, black, hispanic, notHispanic, white, other, unknown = 0, 0, 0, 0, 0, 0, 0
 
