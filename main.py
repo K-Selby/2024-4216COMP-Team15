@@ -19,6 +19,7 @@ while True:
     match userInput:
         case '1':
             print("You have chosen Mental Illness & Fleeing")
+            from Ethan import mentflee
         case '2':
             print("You have chosen Fleeing & Race")
             from Matthew import RaceAndFleeing
