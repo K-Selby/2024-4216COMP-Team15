@@ -2,16 +2,23 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+
+
 plt.style.use('_mpl-gallery')
 
-data = pd.read_csv(r'police shootings.csv')
+# Read data from file
+data = pd.read_csv('police shootings.csv')
 
-# plot
-fig, ax = plt.subplots()
+data['date'] = pd.to_datetime(data['date'])
 
-ax.bar(x, y, width=1, edgecolor="white", linewidth=0.7)
+race_date_counts = data.groupby([data['date'].dt.year, 'race']).size().unstack(fill_value=0)
 
-ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
-       ylim=(0, 8), yticks=np.arange(1, 8))
-
+colors = ['blue', 'green', 'red', 'black', 'purple', 'yellow']
+ 
+# Plot
+race_date_counts.plot(kind='bar', stacked=False, color=colors)
+plt.xlabel('Date')
+plt.ylabel('Count')
+plt.title('Race Distribution by Date')
+plt.legend(title='Race')
 plt.show()
