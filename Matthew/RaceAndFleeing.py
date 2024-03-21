@@ -38,7 +38,7 @@ def raceAndFleeingPieChart():
        fig, ax = plt.subplots()
 
        ax.pie([black, hispanic, white, other+asian+notHispanic, unknown], 
-              labels = ['Black','Hispanic', 'White', 'Other/Asian', 'Unknown'], 
+              labels = [(f'Black\n{black}'),(f'Hispanic\n{hispanic}'), (f'White\n{white}'), (f'Other/Asian\n{other+asian+notHispanic}'), (f'Unknown\n{unknown}')], 
               explode=[0,0,0,0.1,0], 
               colors = colours, 
               autopct='%1.1f%%', 
@@ -47,9 +47,10 @@ def raceAndFleeingPieChart():
               textprops={'fontsize': 8}
               )
 
-       fig.set_size_inches(5, 5)
+       fig.set_size_inches(6, 5.5)
        ax.axis('equal')
        plt.title("fleeing victims measured by race - Pie Chart")
+       plt.subplots_adjust(top=0.85)
        plt.show()
 
 raceAndFleeingPieChart()
