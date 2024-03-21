@@ -9,7 +9,7 @@ def pie():
     plt.style.use('_mpl-gallery-nogrid')
 
     # reading data from file
-    data = pd.read_csv(r'C:\Users\ebpro\OneDrive - Liverpool John Moores University\4216 COMP Comp workshop\Repository Destination\2024-4216COMP-Team15-2\Ethan\police shootings.csv')
+    data = pd.read_csv('police shootings.csv')
 
 
     #taking values out of mental illness
