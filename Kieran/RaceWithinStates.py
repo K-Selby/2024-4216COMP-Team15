@@ -1,9 +1,9 @@
 # Imports
-import pandas
+import pandas as pd
 import matplotlib.pyplot as plt
 
 def openCSV():
-    data = pandas.read_csv('police shootings.csv')
+    data = pd.read_csv('police shootings.csv')
     data = data.sort_values(by='date')
 
     # Creates data frames sepereated into years

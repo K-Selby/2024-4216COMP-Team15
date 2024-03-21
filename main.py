@@ -1,3 +1,6 @@
+# Imports
+import pandas as pd
+import matplotlib.pyplot as plt
 
 # User Interaction
 print("Menu")
