@@ -71,7 +71,7 @@ def PieChart(StateName, DeathToll, YearNumber):
     
     fig.canvas.manager.set_window_title(YearNumber)
 
-    fig.set_size_inches(5, 5)
+    fig.set_size_inches(12, 6)
     ax.axis('equal')
     #plt.title("fleeing victims measured by race - Pie Chart")
     plt.show()
@@ -101,3 +101,5 @@ PieChart(Name2, Value2, "Year 2")
 PieChart(Name3, Value3, "Year 3")
 PieChart(Name4, Value4, "Year 4")
 PieChart(Name5, Value5, "Year 5")
+
+
