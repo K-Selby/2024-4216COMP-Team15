@@ -1,17 +1,27 @@
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 
-plt.style.use('_mpl-gallery')
+def racedate():
 
-data = pd.read_csv(r'police shootings.csv')
+    plt.style.use('_mpl-gallery')
 
-# plot
-fig, ax = plt.subplots()
+    # Read data from file
+    data = pd.read_csv('police shootings.csv')
 
-ax.bar(x, y, width=1, edgecolor="white", linewidth=0.7)
+    #Extracting and grouping data
+    data['date'] = pd.to_datetime(data['date'])
+    data['race'] = data['race'].replace({'H': 'H/N', 'N': 'H/N'}) #Combining data for races H and N
+    race_date_counts = data.groupby([data['date'].dt.year, 'race']).size().unstack(fill_value=0)# Grouping date data into years
 
-ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
-       ylim=(0, 8), yticks=np.arange(1, 8))
+    colors = ['blue', 'green', 'red', 'black', 'purple']#sets colours to be used on graph
+    
+    #Plots Graph of the extracted data and creates axis with names.
+    race_date_counts.plot(kind='bar', stacked=False, color=colors)
+    plt.xlabel('Date')
+    plt.ylabel('Incidents')
+    plt.title('Incidents by Race Over Years') #Creates title of the graph
+    plt.legend(title='Race')#Creates key for colours used to display different races
+    plt.subplots_adjust(left=0.1, right=0.9, bottom=0.1, top=0.9) #Alters borders to fit graph and axis in the window.
+    plt.show()
 
-plt.show()
+racedate()
