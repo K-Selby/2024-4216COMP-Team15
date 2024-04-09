@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def queryDates():
-    print("1. To Enter Specific Year (2015-2020)")
+    print("\n1. To Enter Specific Year (2015-2020)")
     print("2. To Search All Years")
     
     loop = True
@@ -31,7 +31,7 @@ def queryDates():
     return inputYear
 
 def queryArmed():
-    print("1. To Search Records For Armed Deaths")
+    print("\n1. To Search Records For Armed Deaths")
     print("2. To Search Records For Unarmed Deaths")
     print("3. To Search Records For Both")
     
@@ -52,7 +52,7 @@ def queryArmed():
     return option
 
 def queryAge():
-    print("1. To Seach Records For A Specific Age (0-100)")
+    print("\n1. To Seach Records For A Specific Age (0-100)")
     print("2. To Seach Records For All Ages")
     
     while True:
@@ -78,7 +78,7 @@ def queryAge():
     return option
 
 def queryGender():
-    print("1. To Search Records For Males")
+    print("\n1. To Search Records For Males")
     print("2. To Search Records For Females")
     print("3. To Search Records For Both Genders")
     
@@ -100,7 +100,7 @@ def queryGender():
     return option
 
 def queryRace():
-    print("1. To Search Records For Asian")
+    print("\n1. To Search Records For Asian")
     print("2. To Search Records For White")
     print("3. To Search Records For Hispanic/Latino")
     print("4. To Search Records For Black")
@@ -134,7 +134,7 @@ def queryRace():
     return option
 
 def queryMentalIllness():
-    print("1. To Search Records For Those With Signs Of Mental Illness")
+    print("\n1. To Search Records For Those With Signs Of Mental Illness")
     print("2. To Search Records For Those Without Signs Of Mental Illness")
     print("3. To Search Records For Both")
     
@@ -156,7 +156,7 @@ def queryMentalIllness():
     return option
 
 def queryThreat():
-    print("1. To Search Records For Those With Signs Of Being A Threat")
+    print("\n1. To Search Records For Those With Signs Of Being A Threat")
     print("2. To Search Records For Those Without Signs Of Being A Threat")
     print("3. To Search Records For Both")
     
@@ -178,7 +178,7 @@ def queryThreat():
     return option
 
 def queryFlee():
-    print("1. To Search Records For Those Who Were Fleeing")
+    print("\n1. To Search Records For Those Who Were Fleeing")
     print("2. To Search Records For Those Who Were Not Fleeing")
     print("3. To Search Records For Both")
     
@@ -200,7 +200,7 @@ def queryFlee():
     return option
 
 def queryCamera():
-    print("1. To Search Records For Active Body Cameras")
+    print("\n1. To Search Records For Active Body Cameras")
     print("2. To Search Records For Inactive Body Cameras")
     print("3. To Search Records For Both")
     
