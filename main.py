@@ -2,7 +2,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-
 # User Interaction
 print("Menu")
 print("1. Mental Illness & Fleeing - EB")
@@ -14,11 +13,12 @@ print("6. Race & Date - TW")
 print("Q. Quit Program")
 
 while True:
-    userInput = input("Enter the menu number for the visuallisation you want to view\nInput: ")
+    userInput = input("Enter the menu number for the visuallisation/records you want to view\nInput: ")
     
     match userInput:
         case '1':
             print("You have chosen Mental Illness & Fleeing")
+            from Ethan import mentflee
         case '2':
             print("You have chosen Fleeing & Race")
             from Matthew import RaceAndFleeing
@@ -27,10 +27,10 @@ while True:
             from Kieran import RaceWithinStates
         case '4':
             print("You have chosen Year & States")
-            print("Not done!")
+            from Reece import yearandstates
         case '5':
             print("You have chosen Threat Level & Mental Illness")
-            print("Not done")
+            from Joe import mentThreat
         case '6':
             print("You have chosen Race & Date")
             from Tom import RaceDate
