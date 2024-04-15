@@ -11,12 +11,13 @@ def racedate():
     #Extracting and grouping data
     data['date'] = pd.to_datetime(data['date'])
     data['race'] = data['race'].replace({'H': 'H/N', 'N': 'H/N'}) #Combining data for races H and N
-    race_date_counts = data.groupby([data['date'].dt.year, 'race']).size().unstack(fill_value=0)# Grouping date data into years
+    race_date_incidents = data.groupby([data['date'].dt.year, 'race']).size().unstack(fill_value=0)# Grouping date data into years
 
-    colors = ['blue', 'green', 'red', 'black', 'purple']#sets colours to be used on graph
+    colours = ['blue', 'green', 'red', 'black', 'purple']#sets colours to be used on graph
+    plt.figure(figsize=(10, 10))
     
     #Plots Graph of the extracted data and creates axis with names.
-    race_date_counts.plot(kind='bar', stacked=False, color=colors)
+    race_date_incidents.plot(kind='bar', stacked=False, color=colours)
     plt.xlabel('Date')
     plt.ylabel('Incidents')
     plt.title('Incidents by Race Over Years') #Creates title of the graph
