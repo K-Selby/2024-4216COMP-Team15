@@ -17,12 +17,14 @@ def racedate():
     plt.figure(figsize=(10, 10))
     
     #Plots Graph of the extracted data and creates axis with names.
+    fig, ax = plt.subplots()
     race_date_incidents.plot(kind='bar', stacked=False, color=colours)
     plt.xlabel('Date')
     plt.ylabel('Incidents')
     plt.title('Incidents by Race Over Years') #Creates title of the graph
     plt.legend(title='Race')#Creates key for colours used to display different races
     plt.subplots_adjust(left=0.1, right=0.9, bottom=0.1, top=0.9) #Alters borders to fit graph and axis in the window.
+    fig.set_size_inches(12, 6)
     plt.show()
 
 racedate()
