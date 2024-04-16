@@ -35,7 +35,7 @@ def pie():
     #plotting both the pie charts
     fig, axs = plt.subplots(1,2, figsize = (10,5))
     #mentally ill pie chart 
-    axs[0].pie([mentAttack, mentOther, mentUndetermined], labels = [f'attack\n({mentAttack})', f'other\n({mentOther})', f'undetermined\n({mentUndetermined})'], autopct='%1.1f%%', startangle = 70, wedgeprops = {"linewidth": 1, "edgecolor": "white"}, colors = colourThreatLevel)
+    axs[0].pie([mentAttack, mentOther, mentUndetermined], labels = [f'attack\n', f'other\n', f'undetermined\n'], autopct='%1.1f%%', startangle = 70, wedgeprops = {"linewidth": 1, "edgecolor": "white"}, colors = colourThreatLevel)
 
     axs[0].axis('off')
     axs[0].set_aspect('equal')
@@ -43,7 +43,7 @@ def pie():
 
     axs[0].tick_params(axis = 'both', which = 'major', labelsize = 10)
     #not mentally ill pie chart 
-    axs[1].pie([notMentAttack, notMentOther, notMentUndetermined], labels = [f'attack\n({notMentAttack})', f'other\n({notMentOther})', f'undetermined\n({notMentUndetermined})'], autopct = '%1.1f%%', startangle = 70, wedgeprops = {"linewidth": 1, "edgecolor": "white"}, colors = colourThreatLevel)
+    axs[1].pie([notMentAttack, notMentOther, notMentUndetermined], labels = [f'attack\n', f'other\n', f'undetermined\n'], autopct = '%1.1f%%', startangle = 70, wedgeprops = {"linewidth": 1, "edgecolor": "white"}, colors = colourThreatLevel)
 
     axs[1].axis('off')
     axs[1].set_aspect('equal')
