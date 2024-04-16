@@ -289,18 +289,17 @@ def querySearch():
 
     print(dataFrame)
 
-# User Interaction
-print("Menu")
-print("1. Mental Illness & Fleeing - EB")
-print("2. Fleeing & Race - MD")
-print("3. Race & States - KS")
-print("4. Year & States - RP")
-print("5. Threat Level & Mental Illness - JA")
-print("6. Race & Date - TW")
-print("7. Query Database")
-print("Q. Quit Program")
-
 while True:
+    # User Interaction
+    print("Menu")
+    print("1. Mental Illness & Fleeing - EB")
+    print("2. Fleeing & Race - MD")
+    print("3. Race & States - KS")
+    print("4. Year & States - RP")
+    print("5. Threat Level & Mental Illness - JA")
+    print("6. Race & Date - TW")
+    print("7. Query Database")
+    print("Q. Quit Program")
     userInput = input("Enter the menu number for the visuallisation/records you want to view\nInput: ")
     
     match userInput:
