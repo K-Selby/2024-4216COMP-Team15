@@ -1,1 +1,2 @@
 # 2024-4216COMP-Team15
+We have brought all of our code together into one program, to produce our graphs and results for the database we studied. When the program starts, it gives the user two options. Option one allows them to query the database. They will be asked questions on what data they would like to see based on the different sections of the database. Option 2 will allow the user to choose which graph they would like to see. So they choose an option and based on what they choose will then use the person's code they have chosen and then display the graphs.
