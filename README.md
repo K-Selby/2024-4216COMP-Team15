@@ -1,2 +1,22 @@
 # 2024-4216COMP-Team15
-We have brought all of our code together into one program, to produce our graphs and results for the database we studied. When the program starts, it gives the user two options. Option one allows them to query the database. They will be asked questions on what data they would like to see based on the different sections of the database. Option 2 will allow the user to choose which graph they would like to see. So they choose an option and based on what they choose will then use the person's code they have chosen and then display the graphs.
+1. run the main python file
+2. program displays the option to either query the database or view the graphs
+3. query the database:
+   a. enter a specific year or choose to view all years
+   b. choose to search records for armed, unarmed or both.
+   c. choose to searched for all ages or a specific age
+   d. choose to search for records on males, females or both.
+   e. choose to search for records on white, Asian, Hispanic, Black, or all races.
+   f. choose to search for records on people showing signs of mental illness, not showing signs on mental illness or both.
+   g. choose to search for records on people who were considered to be a threat, not considered to be a threat or both.
+   h. choose to search for records on people who fleed, didnt flee or both
+   i. choose to search records on people who wore a body camera, didnt wear a body camera or both.
+4. once all queries have been answered then the program will produce the resulting records based on the answers to the questions inputted by the user.
+5. the other options allow the user to view the graphs we produced:
+    a. mental illness and fleeing - Ethan 
+   b. fleeing and race - Matthew
+   c. race and states - Kieran
+   d. year and states - Reece
+   e. threat level and mental illness - Joe
+   f. Race and Date - Tom
+6. choose an option and then the program will display the graph chosen by the user. 
